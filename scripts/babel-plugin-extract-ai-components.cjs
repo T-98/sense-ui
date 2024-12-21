@@ -1,21 +1,27 @@
-// scripts/babel-plugin-extract-ai-button.cjs
+// scripts/babel-plugin-extract-ai-components.cjs
 const fs = require("fs");
 const path = require("path");
 
 module.exports = function ({ types: t }) {
-  const buttonInstances = [];
+  // Object to hold metadata for each AI component type
+  const componentMetadata = {};
 
   return {
-    name: "extract-ai-button-metadata",
+    name: "extract-ai-components-metadata",
     visitor: {
       JSXElement(path) {
         const openingElement = path.node.openingElement;
         const elementName = openingElement.name;
 
-        // Check if it's an AIButton (e.g., <AIButton ... />)
-        if (t.isJSXIdentifier(elementName) && elementName.name === "AIButton") {
+        // Check if the JSX element is an identifier and starts with 'AI'
+        if (
+          t.isJSXIdentifier(elementName) &&
+          elementName.name.startsWith("AI")
+        ) {
+          const componentType = elementName.name; // e.g., AIButton, AIInput
           const propsObj = {};
 
+          // Iterate over each attribute of the JSX element
           openingElement.attributes.forEach((attr) => {
             if (t.isJSXAttribute(attr) && t.isJSXIdentifier(attr.name)) {
               const propName = attr.name.name;
@@ -37,8 +43,14 @@ module.exports = function ({ types: t }) {
               ) {
                 // <AIButton someProp={123} />
                 propValue = attr.value.expression.value.toString();
+              } else if (
+                t.isJSXExpressionContainer(attr.value) &&
+                t.isIdentifier(attr.value.expression)
+              ) {
+                // <AIButton someProp={variable} />
+                propValue = attr.value.expression.name;
               } else {
-                // For complex expressions
+                // For complex expressions or unsupported types
                 propValue = "[complex expression not resolved]";
               }
 
@@ -46,26 +58,33 @@ module.exports = function ({ types: t }) {
             }
           });
 
-          // Add the extracted info to our array
-          buttonInstances.push({
-            component: "AIButton",
+          // Initialize metadata array for this component type if not already
+          if (!componentMetadata[componentType]) {
+            componentMetadata[componentType] = [];
+          }
+
+          // Push the extracted props into the corresponding metadata array
+          componentMetadata[componentType].push({
+            component: componentType,
             ...propsObj,
           });
         }
       },
     },
+    // Inside the post() method
     post() {
-      // Define the output path for the metadata
-      const outputPath = path.join(__dirname, "..", "AIButtonMetadata.json");
+      const skeleton = {};
 
-      // Structure the final JSON
-      const skeleton = {
-        data: buttonInstances,
-      };
+      Object.keys(componentMetadata).forEach((componentType) => {
+        skeleton[componentType] = {
+          data: componentMetadata[componentType],
+        };
+      });
 
-      // Write the metadata to the JSON file
+      const outputPath = path.join(__dirname, "../metadata", "skeleton.json");
+
       fs.writeFileSync(outputPath, JSON.stringify(skeleton, null, 2), "utf-8");
-      console.log("AIButton metadata extracted to AIButtonMetadata.json");
+      console.log("Skeleton UI metadata extracted to skeleton.json");
     },
   };
 };

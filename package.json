@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:skeleton": "node scripts/buildSkeleton.cjs",
-    "build": "npm run build:skeleton && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

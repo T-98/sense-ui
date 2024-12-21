@@ -28,6 +28,7 @@
 - **Ant Design Integration:** Utilize Ant Design components within AI-prefixed components for a polished UI.
 
 ## Project Structure
+```plaintext
 sense-ui/
 ├── src/
 │ ├── components/
@@ -44,14 +45,12 @@ sense-ui/
 ├── package.json
 ├── README.md
 └── ... other configuration files
-
 ```
 
 ## Installation
 
 1. **Clone the Repository:**
-
-   ```bash
+```
    git clone https://github.com/yourusername/sense-ui.git
    cd sense-ui
 ```
@@ -413,7 +412,3 @@ For any questions, issues, or feature requests, please open an issue on the [Git
 ---
 
 _Happy Coding! 🚀_
-
-```
-
-```

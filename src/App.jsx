@@ -1,14 +1,14 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import ButtonComponent from "./components/ButtonComponent";
+import AIButton from "./components/AIButton";
 import InputComponent from "./components/InputComponent";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
 
-  const handleClick = (e) => {
-    console.log("Button clicked!", e.target);
+  const handleClick = (e, uid) => {
+    console.log("Button clicked!", uid, e.target);
   };
 
   const handleInputChange = (e) => {
@@ -17,13 +17,23 @@ function App() {
 
   return (
     <>
-      <ButtonComponent onClick={handleClick} label="Hello World" />
+      <AIButton
+        uid="btn-001"
+        purpose="submitForm"
+        onClick={(e) => handleClick(e, "btn-001")}
+        label="Submit"
+      />
       <InputComponent
         placeholder="name@example.com"
         value={inputValue}
         onChange={handleInputChange}
       />
-      <ButtonComponent onClick={handleClick} label="Bye" />
+      <AIButton
+        uid="btn-002"
+        purpose="cancel"
+        onClick={(e) => handleClick(e, "btn-002")}
+        label="Cancel"
+      />
     </>
   );
 }

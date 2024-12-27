@@ -53,8 +53,9 @@ module.exports = function ({ types: t }) {
                 // For complex expressions or unsupported types
                 propValue = "[complex expression not resolved]";
               }
-
-              propsObj[propName] = propValue;
+              if (propName === "uid" || propName === "purpose") {
+                propsObj[propName] = propValue;
+              }
             }
           });
 

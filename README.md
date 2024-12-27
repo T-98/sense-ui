@@ -1,4 +1,4 @@
-```markdown
+
 # Sense-UI
 
 **Sense-UI** is a scalable and maintainable React component library integrated with Vite, designed to facilitate AI-driven user interfaces. By leveraging a custom Babel plugin, Sense-UI automatically extracts metadata from AI-prefixed components (e.g., `AIButton`, `AIInput`) during the build process, enabling enhanced functionalities and integrations.
@@ -28,8 +28,7 @@
 - **Ant Design Integration:** Utilize Ant Design components within AI-prefixed components for a polished UI.
 
 ## Project Structure
-```
-
+```plaintext
 sense-ui/
 ├── src/
 │ ├── components/
@@ -46,17 +45,15 @@ sense-ui/
 ├── package.json
 ├── README.md
 └── ... other configuration files
-
-````
+```
 
 ## Installation
 
 1. **Clone the Repository:**
-
-   ```bash
+```
    git clone https://github.com/yourusername/sense-ui.git
    cd sense-ui
-````
+```
 
 2. **Install Dependencies:**
 
@@ -415,7 +412,3 @@ For any questions, issues, or feature requests, please open an issue on the [Git
 ---
 
 _Happy Coding! 🚀_
-
-```
-
-```

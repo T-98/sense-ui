@@ -1,88 +1,95 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import AIButton from "./components/AIButton";
 import AIInput from "./components/AIInput";
 
 function App() {
-  const [firstnameValue, setFirstnameValue] = useState("");
-  const [lastnameValue, setLastnameValue] = useState("");
-  const [emailValue, setEmailValue] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
-  useEffect(() => {
-    if (isSubmitted) {
-      // Send form data to server
-      console.log("Form submitted!", {
-        firstname: firstnameValue,
-        lastname: lastnameValue,
-        email: emailValue,
-      });
-    }
-  }, [isSubmitted, setIsSubmitted]);
-
-  const handleFormAction = (e, isSubmitted) => {
-    setIsSubmitted(isSubmitted);
-    return;
+  const handleNavClick = (e, uid) => {
+    console.log("Navigation Button clicked!", uid, e.target);
   };
 
-  const handleInputChange = (e, uid) => {
-    switch (uid) {
-      case "input-002":
-        setFirstnameValue(e.target.value);
-        break;
-      case "input-003":
-        setLastnameValue(e.target.value);
-        break;
-      case "input-001":
-        setEmailValue(e.target.value);
-        break;
-      default:
-        break;
-    }
+  const handleEmailInputChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleNameInputChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted with email:", email);
+  };
+
+  const handleAction = (e, uid) => {
+    console.log("Action Button clicked!", uid, e.target);
+  };
+
+  const handleSupport = (e, uid) => {
+    console.log("Support Button clicked!", uid, e.target);
   };
 
   return (
     <>
-      <AIInput
-        uid="input-004"
-        purpose="readonly"
-        placeholder="GarbaGE"
-        type="readonly"
-      />
-      <AIInput
-        uid="input-002"
-        purpose="CollectUserFirstName"
-        placeholder="Firstname"
-        value={firstnameValue}
-        onChange={(e) => handleInputChange(e, "input-002")}
-      />
-      <AIInput
-        uid="input-003"
-        purpose="collectUserLastName"
-        placeholder="Lastname"
-        value={lastnameValue}
-        onChange={(e) => handleInputChange(e, "input-003")}
-      />
-      <AIInput
-        uid="input-001"
-        purpose="collectUserEmail"
-        placeholder="name@example.com"
-        value={emailValue}
-        onChange={(e) => handleInputChange(e, "input-001")}
-      />
-      <AIButton
-        uid="btn-001"
-        purpose="submitForm"
-        onClick={(e) => handleFormAction(e, true)}
-        label="Submit"
-      />
-      <AIButton
-        uid="btn-002"
-        purpose="cancel"
-        onClick={(e) => handleFormAction(e, false)}
-        label="Cancel"
-      />
+      <AIButton uid="random-btn-001" purpose="random">
+        Hello
+      </AIButton>
+      <nav>
+        <AIButton
+          uid="nav-btn-001"
+          purpose="navigateHome"
+          label="Home"
+          onClick={(e) => handleNavClick(e, "nav-btn-001")}
+        />
+        <AIButton
+          uid="nav-btn-002"
+          purpose="navigateAbout"
+          label="About"
+          onClick={(e) => handleNavClick(e, "nav-btn-002")}
+        />
+      </nav>
+      <main>
+        <form>
+          <AIInput
+            uid="input-001"
+            purpose="collectUserEmail"
+            placeholder="name@example.com"
+            value={email}
+            onChange={handleEmailInputChange}
+          />
+          <AIInput
+            uid="input-002"
+            purpose="collectUserName"
+            placeholder="Firstname Lastname"
+            value={name}
+            onChange={handleNameInputChange}
+          />
+          <AIButton
+            uid="btn-001"
+            purpose="submitForm"
+            label="Submit"
+            onClick={(e) => handleFormSubmit(e)}
+          />
+        </form>
+        <section>
+          <AIButton
+            uid="section-btn-001"
+            purpose="performAction"
+            label="Action"
+            onClick={(e) => handleAction(e, "section-btn-001")}
+          />
+        </section>
+      </main>
+      <footer>
+        <AIButton
+          uid="footer-btn-001"
+          purpose="contactSupport"
+          label="Support"
+          onClick={(e) => handleSupport(e, "footer-btn-001")}
+        />
+      </footer>
     </>
   );
 }

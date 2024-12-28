@@ -1,10 +1,74 @@
 import { useState, useEffect } from "react";
 import AIButton from "./components/AIButton";
 import AIInput from "./components/AIInput";
-
+import AudioRecorder from "./components/AudioRecorder"
+import ActionHandler from "./services/ActionHandler";
 function App() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+
+  const [skeletonUI, setSkeletonUI] = useState(null);
+
+  // ./frontend/src/App.js
+
+useEffect(() => {
+  let ws;
+  let reconnectInterval = 5000; // 5 seconds
+
+  const connectWebSocket = () => {
+      const wsUrl = 'ws://localhost:8080';
+      ws = new WebSocket(wsUrl);
+
+      ws.onopen = () => {
+          console.log('WebSocket connected');
+      };
+
+      ws.onmessage = (message) => {
+          console.log('WebSocket message received:', message.data);
+          try {
+              const action = JSON.parse(message.data);
+              ActionHandler(action);
+          } catch (error) {
+              console.error('Error parsing action message:', error);
+          }
+      };
+
+      ws.onclose = () => {
+          console.log('WebSocket disconnected. Reconnecting in 5 seconds...');
+          setTimeout(connectWebSocket, reconnectInterval);
+      };
+
+      ws.onerror = (error) => {
+          console.error('WebSocket error:', error);
+          ws.close();
+      };
+  };
+
+  connectWebSocket();
+
+  // Cleanup on unmount
+  return () => {
+      if (ws) ws.close();
+  };
+}, []);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('../metadata/skeleton.json'); // Fetch from public directory
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        setSkeletonUI(jsonData);
+      } catch (err) {
+        console.error('Error fetching JSON:', err);
+      } 
+    };
+
+    fetchData();
+  }, []);
 
   const handleNavClick = (e, uid) => {
     console.log("Navigation Button clicked!", uid, e.target);
@@ -90,6 +154,7 @@ function App() {
           onClick={(e) => handleSupport(e, "footer-btn-001")}
         />
       </footer>
+      <AudioRecorder skeletonUI={skeletonUI} />
     </>
   );
 }

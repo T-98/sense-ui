@@ -117,7 +117,7 @@ module.exports = function ({ types: t }) {
                 }
 
                 // Filter props to include only 'uid' and 'purpose'
-                if (propName === "uid" || propName === "purpose") {
+                if (propName === "id" || propName === "purpose") {
                   propsObj[propName] = propValue;
                 }
               }

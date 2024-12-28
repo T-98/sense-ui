@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Flex } from "antd";
 
-const AIButton = ({ uid, purpose, onClick, label }) => (
+const AIButton = ({ id, purpose, onClick, label }) => (
   <Flex>
     <Button type="primary" onClick={onClick}>
       {label}

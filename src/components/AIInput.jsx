@@ -2,10 +2,10 @@
 import React from "react";
 import { Input, Flex } from "antd";
 
-const AIInput = ({ uid, purpose, value, onChange, placeholder }) => (
+const AIInput = ({ id, purpose, value, onChange, placeholder }) => (
   <Flex>
     <Input
-      uid={uid}
+      id={id}
       placeholder={placeholder}
       value={value}
       onChange={onChange}

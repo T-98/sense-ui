@@ -33,18 +33,18 @@ function App() {
 
   return (
     <>
-      <AIButton uid="random-btn-001" purpose="random">
+      <AIButton id="random-btn-001" purpose="random">
         Hello
       </AIButton>
       <nav>
         <AIButton
-          uid="nav-btn-001"
+          id="nav-btn-001"
           purpose="navigateHome"
           label="Home"
           onClick={(e) => handleNavClick(e, "nav-btn-001")}
         />
         <AIButton
-          uid="nav-btn-002"
+          id="nav-btn-002"
           purpose="navigateAbout"
           label="About"
           onClick={(e) => handleNavClick(e, "nav-btn-002")}
@@ -53,21 +53,21 @@ function App() {
       <main>
         <form>
           <AIInput
-            uid="input-001"
+            id="input-001"
             purpose="collectUserEmail"
             placeholder="name@example.com"
             value={email}
             onChange={handleEmailInputChange}
           />
           <AIInput
-            uid="input-002"
+            id="input-002"
             purpose="collectUserName"
             placeholder="Firstname Lastname"
             value={name}
             onChange={handleNameInputChange}
           />
           <AIButton
-            uid="btn-001"
+            id="btn-001"
             purpose="submitForm"
             label="Submit"
             onClick={(e) => handleFormSubmit(e)}
@@ -75,7 +75,7 @@ function App() {
         </form>
         <section>
           <AIButton
-            uid="section-btn-001"
+            id="section-btn-001"
             purpose="performAction"
             label="Action"
             onClick={(e) => handleAction(e, "section-btn-001")}
@@ -84,7 +84,7 @@ function App() {
       </main>
       <footer>
         <AIButton
-          uid="footer-btn-001"
+          id="footer-btn-001"
           purpose="contactSupport"
           label="Support"
           onClick={(e) => handleSupport(e, "footer-btn-001")}

@@ -5,7 +5,7 @@ import { Input, Flex } from "antd";
 const AIInput = ({ id, purpose, value, onChange, placeholder }) => (
   <Flex>
     <Input
-      id={id}
+      id={id} // Ensure the id is passed here
       placeholder={placeholder}
       value={value}
       onChange={onChange}

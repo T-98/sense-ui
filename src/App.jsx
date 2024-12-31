@@ -97,9 +97,6 @@ useEffect(() => {
 
   return (
     <>
-      <AIButton id="random-btn-001" purpose="random">
-        Hello
-      </AIButton>
       <nav>
         <AIButton
           id="nav-btn-001"

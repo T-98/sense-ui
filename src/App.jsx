@@ -107,9 +107,9 @@ function App() {
     <>
       <div className="relative flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-black">
         <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
-        <div className="px-96 pb-20 pt-5 bg-black w-screen h-10 duration-1000 animate-title">
-          <nav className="flex flex-row justify-between w-full h-full">
-            <p className="text-white">SenseUI</p>
+        <div className="px-96 pb-20 pt-0 bg-black w-screen duration-1000 animate-title ">
+          <nav className="flex flex-row justify-between items-center w-full h-14 p-8 rounded-lg border-b border-b-slate-700">
+            <p className="text-white text-xl font-custom">SenseUI</p>
             <div className="flex flex-row gap-4">
               <AIButton
                 id="nav-btn-001"
@@ -130,7 +130,7 @@ function App() {
           className="absolute inset-0 -z-10 animate-fade-in"
           quantity={100}
         />
-        <h1 className="py-3.5 px-0.5 z-10 text-4xl text-transparent duration-1000 bg-white cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text ">
+        <h1 className="font-custom py-3.5 px-0.5 z-10 text-4xl text-transparent duration-1000 bg-white cursor-default text-edge-outline animate-title sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text ">
           SenseUI
         </h1>
 
@@ -154,49 +154,43 @@ function App() {
                   onChange={handleLastNameInputChange}
                 />
               </div>
-              <AIInput
-                id="input-003"
-                purpose="collectUserEmail"
-                placeholder="name@example.com"
-                value={email}
-                onChange={handleEmailInputChange}
-              />
-              <AIInput
-                id="input-004"
-                purpose="phone number"
-                placeholder="(123) 456-7890"
-                value={phone}
-                onChange={handlePhoneInputChange}
-              />
-              <AIInput
-                id="input-005"
-                purpose="collectUserName"
-                placeholder="Firstname Lastname"
-              />
-              <AIButton
-                id="btn-001"
-                purpose="submitForm"
-                label="Submit"
-                onClick={(e) => handleFormSubmit(e)}
-              />
+              <div className="flex flex-col gap-2 mb-2">
+                <AIInput
+                  id="input-003"
+                  purpose="collectUserEmail"
+                  placeholder="name@example.com"
+                  value={email}
+                  onChange={handleEmailInputChange}
+                />
+                <AIInput
+                  id="input-004"
+                  purpose="phone number"
+                  placeholder="(123) 456-7890"
+                  value={phone}
+                  onChange={handlePhoneInputChange}
+                />
+                <AIInput
+                  id="input-005"
+                  purpose="Message"
+                  placeholder="Enter message here..."
+                />
+              </div>
+              <div className="flex flex-row justify-between mb-2">
+                <AIButton
+                  id="btn-001"
+                  purpose="submitForm"
+                  label="Submit"
+                  onClick={(e) => handleFormSubmit(e)}
+                />
+                <AIButton
+                  id="section-btn-001"
+                  purpose="performAction"
+                  label="Cancel"
+                  onClick={(e) => handleAction(e, "section-btn-001")}
+                />
+              </div>
             </form>
-            <section>
-              <AIButton
-                id="section-btn-001"
-                purpose="performAction"
-                label="Action"
-                onClick={(e) => handleAction(e, "section-btn-001")}
-              />
-            </section>
           </main>
-          <footer>
-            <AIButton
-              id="footer-btn-001"
-              purpose="contactSupport"
-              label="Support"
-              onClick={(e) => handleSupport(e, "footer-btn-001")}
-            />
-          </footer>
           <AudioRecorder skeletonUI={skeletonUI} />
         </div>
       </div>

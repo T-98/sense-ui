@@ -8,6 +8,14 @@
   }
 }
 
+@font-face {
+  font-family: "CalSans-SemiBold";
+  src: url("/src/assets/fonts/CalSans-SemiBold.ttf") format("ttf"),
+    url("/src/assets/fonts/CalSans-SemiBold.ttf") format("ttf");
+  font-weight: 400; /* or normal */
+  font-style: normal;
+}
+
 canvas {
   position: fixed;
   top: 0;

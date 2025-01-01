@@ -599,8 +599,8 @@ video {
   display: none;
 }
 
-.h-10 {
-  height: 2.5rem;
+.h-14 {
+  height: 3.5rem;
 }
 
 .h-px {
@@ -611,16 +611,12 @@ video {
   height: 100vh;
 }
 
-.h-full {
-  height: 100%;
+.w-full {
+  width: 100%;
 }
 
 .w-screen {
   width: 100vw;
-}
-
-.w-full {
-  width: 100%;
 }
 
 @keyframes fade-in {
@@ -735,6 +731,10 @@ video {
   justify-content: space-between;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
@@ -747,8 +747,21 @@ video {
   white-space: nowrap;
 }
 
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
 .border {
   border-width: 1px;
+}
+
+.border-b {
+  border-bottom-width: 1px;
+}
+
+.border-b-slate-700 {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(51 65 85 / var(--tw-border-opacity, 1));
 }
 
 .bg-black {
@@ -785,6 +798,10 @@ video {
           background-clip: text;
 }
 
+.p-8 {
+  padding: 2rem;
+}
+
 .px-0\.5 {
   padding-left: 0.125rem;
   padding-right: 0.125rem;
@@ -800,47 +817,30 @@ video {
   padding-bottom: 0.875rem;
 }
 
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-.py-32 {
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-}
-
-.pb-32 {
-  padding-bottom: 8rem;
-}
-
-.pt-6 {
-  padding-top: 1.5rem;
-}
-
-.pt-10 {
-  padding-top: 2.5rem;
-}
-
 .pb-20 {
   padding-bottom: 5rem;
 }
 
-.pt-5 {
-  padding-top: 1.25rem;
+.pt-0 {
+  padding-top: 0px;
 }
 
 .text-center {
   text-align: center;
 }
 
-.font-display {
-  font-family: var(--font-calsans);
+.font-custom {
+  font-family: CalSans-SemiBold, sans-serif;
 }
 
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .text-transparent {
@@ -858,6 +858,19 @@ video {
 
 .duration-1000 {
   transition-duration: 1000ms;
+}
+
+@font-face {
+  font-family: "CalSans-SemiBold";
+
+  src: url("/src/assets/fonts/CalSans-SemiBold.ttf") format("ttf"),
+    url("/src/assets/fonts/CalSans-SemiBold.ttf") format("ttf");
+
+  font-weight: 400;
+
+  /* or normal */
+
+  font-style: normal;
 }
 
 canvas {

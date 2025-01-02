@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .text-edge-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  }
+}
+
+@font-face {
+  font-family: "CalSans-SemiBold";
+  src: url("/src/assets/fonts/CalSans-SemiBold.ttf") format("ttf"),
+    url("/src/assets/fonts/CalSans-SemiBold.ttf") format("ttf");
+  font-weight: 400; /* or normal */
+  font-style: normal;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

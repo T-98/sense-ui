@@ -26,4 +26,10 @@ export default defineConfig({
       },
     }),
   ],
+    resolve: {
+    alias: {
+      // The key '@' can be anything, but '@' is standard for "src".
+      '@': path.resolve(__dirname, './src')
+    },
+  },
 });

@@ -106,7 +106,7 @@ useEffect(() => {
         />
         <AIButton
           id="nav-btn-002"
-          purpose="navigateAbout"
+          purpose="This button is reponsible for telling about what the website does."
           label="About"
           onClick={(e) => handleNavClick(e, "nav-btn-002")}
         />

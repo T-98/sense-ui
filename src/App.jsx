@@ -17,7 +17,7 @@ function App() {
     let reconnectInterval = 5000; // 5 seconds
 
     const connectWebSocket = () => {
-      const wsUrl = "ws://localhost:8080";
+      const wsUrl = "wss://app.senseui.heimskr.com/ws/";
       ws = new WebSocket(wsUrl);
 
       ws.onopen = () => {

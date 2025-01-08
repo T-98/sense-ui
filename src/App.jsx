@@ -4,13 +4,12 @@ import AIInput from "./components/AIInput";
 import AudioRecorder from "./components/AudioRecorder";
 import ActionHandler from "./services/ActionHandler";
 import Particles from "./components/Particles";
+import skeletonUI from "../metadata/skeleton.json";
 function App() {
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-
-  const [skeletonUI, setSkeletonUI] = useState(null);
 
   useEffect(() => {
     let ws;
@@ -51,23 +50,6 @@ function App() {
     return () => {
       if (ws) ws.close();
     };
-  }, []);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("../metadata/skeleton.json"); // Fetch from public directory
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const jsonData = await response.json();
-        setSkeletonUI(jsonData);
-      } catch (err) {
-        console.error("Error fetching JSON:", err);
-      }
-    };
-
-    fetchData();
   }, []);
 
   const handleNavClick = (e, uid) => {

@@ -75,7 +75,7 @@ function AudioRecorder({skeletonUI}) {
                         }
 
                         // Send the audio blob to the server
-                        const response = await fetch("http://0.0.0.0:8000/generate", {
+                        const response = await fetch("https://app.senseui.heimskr.com//generate", {
                             method: "POST",
                             headers: { "Content-Type": "application/json" },
                             body: JSON.stringify({ audio_path: base64Audio, skeleton_ui: skeletonUI }),

@@ -1,0 +1,75 @@
+{
+  "context": "root",
+  "children": [
+    {
+      "context": "nav",
+      "children": [],
+      "components": {
+        "AIButton": [
+          {
+            "component": "AIButton",
+            "id": "nav-btn-001",
+            "purpose": "navigateHome"
+          },
+          {
+            "component": "AIButton",
+            "id": "nav-btn-002",
+            "purpose": "navigateAbout"
+          }
+        ]
+      }
+    },
+    {
+      "context": "main",
+      "children": [
+        {
+          "context": "form",
+          "children": [],
+          "components": {
+            "AIInput": [
+              {
+                "component": "AIInput",
+                "id": "input-001",
+                "purpose": "collectUserName"
+              },
+              {
+                "component": "AIInput",
+                "id": "input-002",
+                "purpose": "collectUserName"
+              },
+              {
+                "component": "AIInput",
+                "id": "input-003",
+                "purpose": "collectUserEmail"
+              },
+              {
+                "component": "AIInput",
+                "id": "input-004",
+                "purpose": "phone number"
+              },
+              {
+                "component": "AIInput",
+                "id": "input-005",
+                "purpose": "Message"
+              }
+            ],
+            "AIButton": [
+              {
+                "component": "AIButton",
+                "id": "btn-001",
+                "purpose": "submitForm"
+              },
+              {
+                "component": "AIButton",
+                "id": "section-btn-001",
+                "purpose": "performAction"
+              }
+            ]
+          }
+        }
+      ],
+      "components": {}
+    }
+  ],
+  "components": {}
+}
